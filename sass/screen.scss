@@ -1,0 +1,217 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+$lineColor: #808080;
+
+@import "compass/reset";
+
+body {
+    border-top: 1px solid $lineColor;
+}
+
+body * {
+    font-family: 'Segoe UI', Arial, Geneva, sans-serif;
+    font-size: 15px;
+}
+
+div.outer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    bottom: 6rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    div.panels {
+        width: 27rem;
+        margin: 0 auto;
+        padding: 0;
+        height: auto;
+        overflow: hidden;
+        border-left: 1px solid $lineColor;
+        border-right: 1px solid $lineColor;
+        border-bottom: 1px solid $lineColor;
+
+        &.message {
+            height: 3rem;
+            padding: 4rem 0;
+            background-color: $lineColor;
+            color: white;
+            line-height: 2rem;
+            text-align: center;
+        }
+
+        > div {
+            position: relative;
+            width: calc(9rem - 1px);
+            padding: 0;
+            margin: 0;
+            height: 5rem;
+            border-right: 1px solid $lineColor;
+            float: left;
+
+            .dayName {
+                font-weight: normal;
+                font-size: .8rem;
+                position: absolute;
+                right: 3rem;
+                left: 3rem;
+                text-align: center;
+                bottom: 0.5rem;
+            }
+
+            > img {
+                position: absolute;
+                left: calc(50% - 1.25rem);
+                top: 1rem;
+                width: 2.5rem;
+            }
+
+            .temperature {
+                font-size: 1rem;
+                font-weight: normal;
+                position: absolute;
+                right: 0.5rem;
+                text-align: center;
+                width: 2rem;
+                top: 1.7rem;
+            }
+
+            &:first-child {
+                width: calc(100% - 1px);
+                height: 6.5rem;
+                border-right: none;
+                border-bottom: 1px solid $lineColor;
+
+                > img {
+                    position: absolute;
+                    left: calc(50% - 30px);
+                    top: 2.2rem;
+                    width: auto;
+                }
+
+                .city {
+                    position: absolute;
+                    left: 5rem;
+                    right: 5rem;
+                    display: block;
+                    top: 0.7rem;
+                    font-size: .9rem;
+                    text-align: center;
+                }
+
+                .desc {
+                    position: absolute;
+                    text-align: center;
+                    top: 5rem;
+                    width: 7rem;
+                    right: 1rem;
+                }
+
+                .temperature {
+                    font-size: 4rem;
+                    position: absolute;
+                    right: 1rem;
+                    text-align: center;
+                    width: 6rem;
+                    top: 1rem;
+                }
+
+                .dayName {
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                    position: absolute;
+                    top: 2.5rem;
+                    left: 1.5rem;
+                    bottom: auto;
+                    text-align: left;
+                }
+            }
+
+            &:last-child {
+                border-right: none;
+            }
+        }
+    }
+
+    div.zip {
+        padding: 2rem 1rem;
+
+        > * {
+            display: inline-block;
+            margin: 0 0.2rem;
+        }
+
+        text-align: center;
+
+        input[type=text] {
+            width: 4rem;
+        }
+    }
+}
+
+body > footer {
+    position: fixed;
+    text-align: center;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    height: 3rem;
+    background-image: url('/images/wundergroundLogo_4c_horz.png');
+    background-position: center bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+    > span {
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: 3rem;
+        height: 1rem;
+        font-size: 0.6rem;
+        font-style: oblique;
+        line-height: 0.5rem;
+    }
+}
+
+@media (max-width: 420px) {
+
+    div.outer {
+        div.panels {
+            width: 100%;
+            margin: 0 auto;
+            border: none;
+
+            > div {
+                &:first-child {
+                    width: 100%;
+                }
+
+                width: 100%;
+                float: none;
+                border-bottom: 1px solid $lineColor;
+                border-right: none;
+
+                img {
+                    left: 1rem;
+                    right: auto;
+                }
+
+                .dayName {
+                    left: 4rem;
+                    right: 4rem;
+                    font-size: 1rem;
+                    font-weight: bold;
+                    text-align: center;
+                    top: 1.8rem;
+                }
+            }
+        }
+    }
+}

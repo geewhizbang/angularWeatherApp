@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="css/screen.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+    <script src="scripts/controllers/weather.js"></script>
+</head>
+<body ng-app="weatherApp" class="ng-scope" ng-controller="weather">
+
+    
+    <div class="outer">
+        <div class="panels message" ng-bind="errorMessage" ng-hide="showResults"></div>
+        <div class="panels" ng-hide="!showResults" >
+            <div ng-repeat="day in forecast">
+                <p ng-hide="!day.isFirst" class="city">{{day.city}}</p>
+                <p class="dayName">{{day.name}}</p>
+                <img src="{{day.icon_url}}" />
+                <p class="temperature">{{day.temperature}}&deg;</p>
+                <p class="desc" ngHide="day.isFirst">{{day.description}}</p>
+            </div>
+        </div>
+
+        <div class="zip">
+            <label for="zip">Zip Code</label>
+            <input type="text" maxlength="5" id="zip"
+                   ng-keypress="captureEnter($event, setZip)"
+                   data-ng-model="zip"
+                   ng-required="true"
+                   ng-minlength="5"
+                   ng-maxlength="5"
+                    /><button ng-click="setZip()">Change</button>
+        </div>
+    </div>
+    <footer><span>Powered by Weather Underground</span></footer>
+</body>
+</html>
